@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import 'react-quill/dist/quill.snow.css';
 import styled from 'styled-components';
 import { EditorProps } from '../Types/appTypes';
-import ReactQuill from 'react-quill';
+const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
+
 
 const Editor: React.FC<EditorProps> = ({ value, onChange }) => {
 
@@ -11,7 +12,7 @@ const Editor: React.FC<EditorProps> = ({ value, onChange }) => {
         <>
             {<EditorContainer>
                 {typeof window !== 'undefined' && window.document &&
-                    <ReactQuill value={value} onChange={onChange} />
+                    <QuillEditor value={value} onChange={onChange} />
                 }
             </EditorContainer>}
         </>

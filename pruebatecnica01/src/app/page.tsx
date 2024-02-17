@@ -15,13 +15,10 @@ import OfflineView from "./Components/OfflineView";
 
   
 
-  let value2=false
-  if (typeof window !== 'undefined') {
-    value2=window?.navigator.onLine
-  }
+ 
  function SimpleBottomNavigation() {
   const [value, setValue] = useState(0);
-  const [isOnline, setIsOnline] = useState(value2);
+  const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -57,7 +54,7 @@ import OfflineView from "./Components/OfflineView";
   );
 }
 const Home = () => {
-  const [isOnline, setIsOnline] = useState(value2);
+  const [isOnline, setIsOnline] = useState(true);
   const [offlineMode, setOfflineMode] = useState(false)
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -82,7 +79,7 @@ const Home = () => {
 
 
   return (
-    <Container style={{opacity:0}} className="primary-glow">
+    <Container style={{visibility:'hidden'}} className="primary-glow">
       <Header offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
       {isOnline ? (
         <BlogContent offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
@@ -95,8 +92,7 @@ const Home = () => {
 };
 
 const Container = styled.div`
-opacity: 1 !important;
-
+visibility: visible !important;
   color: ${({ theme }) => theme.palette.text.primary};
   h4 {
     color: #1c8ebb;

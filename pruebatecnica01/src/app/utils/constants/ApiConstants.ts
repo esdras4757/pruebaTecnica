@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:5500'
+const urlBase = process.env.URLTOBACK || 'http://localhost:5500'
 
 export const ApiConstants={
     POST_APP_GETALLARTICLES:`${urlBase}/api/articles/`,

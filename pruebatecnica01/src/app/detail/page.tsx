@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 import Header from "../Components/Header";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { BottomNavigation, BottomNavigationAction, Box, Drawer } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { TabList, TabPanel } from "@mui/lab";
@@ -36,7 +36,9 @@ export default function Home() {
   return (
     <Container className="primary-glow  " >
       <Header/>
+      <Suspense>
       <DetailArticle />
+      </Suspense>
       <SimpleBottomNavigation/>
     </Container>
   );
