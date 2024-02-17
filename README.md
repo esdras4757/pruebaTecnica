@@ -25,7 +25,7 @@ npm i
 npm run dev
 ```
 
-### 4. Instalar dependencias servidor (ejecutar desde raiz del proyecto)
+### 4. Instalar dependencias servidor, en otra terminal (ejecutar desde raiz del proyecto)
 
 ```bash
 cd server
