@@ -60,7 +60,7 @@ const DraweEditArticle = (props: DrawerInterface) => {
         <button style={{ border: 0, background: 'none' }} type="button">
             {fileList && fileList[0] ? <i className='fas fs-3 fa-circle-check text-success'></i> : <PlusOutlined />}
             <div style={{ marginTop: 8 }}>
-                {fileList ? fileList[0]?.name : 'Subir imagen'}
+                {fileList ? fileList[0]?.name?.split('/')[7]??' ' : 'Subir imagen'}
             </div>
         </button>
     );

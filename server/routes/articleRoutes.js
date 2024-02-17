@@ -158,6 +158,16 @@ router.put('/update/:articleId', upload.single('imageUrl'), async (req, res) => 
       if (!existingArticle.length) {
         return res.status(404).send('Artículo no encontrado');
       }
+
+      if (req.file) {
+        console.log(req.file)
+        const storageRef= ref(storage,`images/${req.file.originalname}`)
+        const metadata= {
+            contentType:req.file.mimetype,
+        }
+        const snapShot= await uploadBytes(storageRef,req.file.buffer,metadata)
+        fileUrl= await getDownloadURL(snapShot.ref)
+      }
   
       // Construye la actualización dinámicamente
       const updateFields = {};
@@ -165,7 +175,7 @@ router.put('/update/:articleId', upload.single('imageUrl'), async (req, res) => 
       if (content) updateFields.content = content;
       if (author) updateFields.author = author;
       if (publicationDate) updateFields.publicationDate = publicationDate;
-      if (req?.file) updateFields.imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.originalname}`;
+      if (req?.file) updateFields.imageUrl = fileUrl;
   
       // Verifica si hay algún campo para actualizar
       if (Object.keys(updateFields).length === 0) {
