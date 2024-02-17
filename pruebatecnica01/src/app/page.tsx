@@ -12,7 +12,6 @@ import styled from "styled-components";
 import BlogCoontent from "./Components/BlogCoontent";
 import BlogContent from "./Components/BlogCoontent";
 import OfflineView from "./Components/OfflineView";
-
   
 
  
