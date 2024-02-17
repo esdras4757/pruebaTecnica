@@ -253,7 +253,7 @@ const DraweEditArticle = (props: DrawerInterface) => {
 
                                 </div>
                                 <div className='mb-4'>
-                                    Etiquetas
+                                    {/* Etiquetas */}
                                     <div className='d-flex column-gap-4 mt-3 row-gap-2' style={{ flexWrap: 'wrap' }}>
                                         {/* <Chip label="Chip Filled" />
                                         <Chip label="Chip Filled" />
