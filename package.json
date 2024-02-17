@@ -1,0 +1,11 @@
+{
+  "name": "copiapruebatecnica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-and-start": "cd pruebatecnica01 && npm install && npm run dev && cd .. && cd server && npm install && npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
