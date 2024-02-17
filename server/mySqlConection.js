@@ -1,13 +1,14 @@
 const { createPool } = require('mysql2/promise');
-
+require('dotenv').config();
 let pool;
-
+const dbUser = process.env.USERDB;
+const dbPassword= process.env.PASWORDDB;
 const initializePool = async () => {
   try {
     pool = await createPool({
       host: 'aws.connect.psdb.cloud',
-      user: 'bszgh0bbh14ffd7ajljd',
-      password: 'pscale_pw_WvPvypmRx8OgS7n4hYyTfNG0LYdtU1ydQGK8EyCXH1o',
+      user: dbUser,
+      password: dbPassword,
       database: 'dbpttest',
       ssl: {
         rejectUnauthorized: false
