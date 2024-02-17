@@ -95,7 +95,7 @@ const DetailArticle = (props:PropsInterface) => {
                     <div style={{ overflow: 'auto', height: 'calc(100vh - 120px)' }}>
                         <div className='bg-dark d-flex justify-content-center mb-3'>
                             <img
-                                className='col-3 col-md-2' style={{ maxHeight: 500 }}
+                                className='col-6 col-md-2' style={{ maxHeight: 500 }}
                                 src={data?.imageUrl !== '' && data?.imageUrl ? data.imageUrl : '/images/imgPlaceholder.jpg'}
                                 alt={data?.title}
 

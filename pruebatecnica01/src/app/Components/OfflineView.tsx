@@ -65,7 +65,7 @@ const OfflineView = (props:mainProps) => {
                             <div style={{ overflow: 'auto', height: 'calc(100vh - 120px)' }}>
                                 <div className='bg-dark d-flex justify-content-center mb-3'>
                                     <img
-                                        className='col-2' style={{ maxHeight: 500 }}
+                                        className='col-6 col-md-2' style={{ maxHeight: 500 }}
                                         src={detailSelected?.imageUrl !== '' && detailSelected?.imageUrl ? detailSelected.imageUrl : '/images/imgPlaceholder.jpg'}
                                         alt={detailSelected?.title}
         
