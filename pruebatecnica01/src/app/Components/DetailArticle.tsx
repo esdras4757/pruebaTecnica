@@ -95,13 +95,13 @@ const DetailArticle = (props:PropsInterface) => {
                     <div style={{ overflow: 'auto', height: 'calc(100vh - 120px)' }}>
                         <div className='bg-dark d-flex justify-content-center mb-3'>
                             <img
-                                className='col-2' style={{ maxHeight: 500 }}
+                                className='col-3 col-md-2' style={{ maxHeight: 500 }}
                                 src={data?.imageUrl !== '' && data?.imageUrl ? data.imageUrl : '/images/imgPlaceholder.jpg'}
                                 alt={data?.title}
 
                             />
                         </div>
-                        <DetailContainer style={{ height: '65%' }}>
+                        <DetailContainer className='btn-container' style={{ height: '65%' }}>
                            {data&& <ButonsPack onSuccess={getAllArticlesFn} article={data}/>}
                             <div className='text-center mt-4'>
                                 <div>
@@ -124,6 +124,22 @@ const DetailArticle = (props:PropsInterface) => {
 export default DetailArticle
 
 const DetailContainer = styled.div`
+   @media (max-width: 600px) {
+
+        margin-top: 5px !important;
+        justify-content: center;
+        .container22 {
+            justify-content: center !important;
+        }
+        .IconContent{
+            font-size: 14px;
+            padding: 6px;
+            height: 32px;
+            width: 32px;
+        }
+   }
+
+
 padding: 10px 20px;
 .content{
     padding: 10px;

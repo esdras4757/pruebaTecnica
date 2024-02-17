@@ -75,22 +75,23 @@ const Filters = (props: FiltersProps) => {
 
   return (
     <div className='col-12 mb-4'>
-      {allLine && (
-        <div className='d-flex justify-content-between w-100 mt-3' style={{ overflow: 'hidden', flexWrap: 'wrap' }}>
+      {  (
+        <div className='d-flex justify-content-center justify-content-md-between w-100 mt-3' style={{ overflow: 'hidden', flexWrap: 'wrap' }}>
 
           <div className='col-12 d-flex fs-5 justify-content-between pe-1'>
             <div>
               <i className='fas fa-filter me-1'></i><span className='me-3'>Filtros</span>
             </div>
             <div>
+            <i title={allLine ? 'Ocultar filtros' : 'Mostrar filtros'} onClick={e => setAllLine(!allLine)} style={{ backgroundColor: '#7B3CCC', borderRadius: 100, padding: 5 }} className={`fas text-white cursor-pointer fa-eye${allLine ? '-slash' : ''} `}></i>
               <i title='Buscar' onClick={e => {
                 getAllArticlesFn()
-              }} style={{ backgroundColor: 'blue', borderRadius: 100, padding: 5 }} className='fas text-white pointer fa-magnifying-glass mx-1'></i>
+              }} style={{ backgroundColor: 'blue', borderRadius: 100, padding: 5 }} className='fas text-white pointer fa-magnifying-glass mx-2'></i>
               <i title='Restablecer filtros' onClick={e=>{resetFilters()}} style={{ backgroundColor: '#00CCB2', borderRadius: 100, padding: 5 }} className='fas text-white pointer fa-rotate-left me-1 mr-3'></i>
             </div>
           </div>
-          {filtersNames.slice(0, 4).map((element) => (
-            <div className='col-3 ' key={element?.id}>
+          {allLine && filtersNames.slice(0, 4).map((element) => (
+            <div className='col-md-3 col-12' key={element?.id}>
               <TextField
                 className='col-12'
                 value={editFilters[element?.id]?.conditions?.value ?? ''}

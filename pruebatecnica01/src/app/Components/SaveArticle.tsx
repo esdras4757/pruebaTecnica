@@ -33,7 +33,8 @@ const SaveArticle: React.FC<ArticleSaveButtonProps> = ({ article,info }) => {
         setIsSaved(false);
         info('Artículo eliminado.');
       } else {
-        const imageBlob = await fetch(article.imageUrl).then((response) => response.blob());
+        const imageBlob = await fetch(article.imageUrl,{  method: 'GET',
+        mode: 'no-cors',}).then((response) => response.blob());
         const newArticle = { ...article, imageBlob };
         storedArticles.push(newArticle);
 
@@ -47,7 +48,7 @@ const SaveArticle: React.FC<ArticleSaveButtonProps> = ({ article,info }) => {
   };
 
   return (
-    <IconContent onClick={(e) => {
+    <IconContent className='IconContent' onClick={(e) => {
       e.stopPropagation();
       handleSaveArticle();
     }}>

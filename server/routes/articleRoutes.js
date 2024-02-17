@@ -3,6 +3,20 @@ const router = express.Router();
 const poolfn = require('../mySqlConection');
 const multer = require('multer')
 const path = require('path');
+const admin = require('firebase-admin')
+const serviceAccount= require('../siriushrm-3e7a6-firebase-adminsdk-eyy6c-803df93253.json')
+const { getStorage, ref, uploadBytes, getDownloadURL } = require('firebase/storage');
+const {initializeApp} = require("firebase/app")
+
+initializeApp({
+  credential:admin.credential.cert(serviceAccount),
+  storageBucket:'gs://siriushrm-3e7a6.appspot.com'
+})
+
+const storage= getStorage()
+
+const upload=multer({storage:multer.memoryStorage()})
+
 
 let pool
 async function connect(){
@@ -10,18 +24,7 @@ async function connect(){
 }
 connect()
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'uploads/'); // La carpeta donde se guardarán los archivos
-    },
-    filename: (req, file, cb) => {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-      cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-    },
-  });
-  
-  const upload = multer({ storage });
-  
+
   router.post('/', async (req, res) => {
     try {
       // Obtener datos de búsqueda del cuerpo de la solicitud
@@ -116,7 +119,17 @@ router.post('/add', upload.single('imageUrl'), async (req, res) => {
       return res.status(400).send( 'Se requieren título, Autor y contenido' );
     }
     try {
-      const fileUrl = req?.file?`${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`:''
+
+      let fileUrl=''
+      if (req.file) {
+        console.log(req.file)
+        const storageRef= ref(storage,`images/${req.file.originalname}`)
+        const metadata= {
+            contentType:req.file.mimetype,
+        }
+        const snapShot= await uploadBytes(storageRef,req.file.buffer,metadata)
+        fileUrl= await getDownloadURL(snapShot.ref)
+      }
       const [result] = await pool.execute('INSERT INTO articles (articleId,title, content, imageUrl,author,publicationDate) VALUES (UUID(),?, ?, ?,?,?)', [
         title,
         content,
@@ -124,11 +137,13 @@ router.post('/add', upload.single('imageUrl'), async (req, res) => {
         author,
         publicationDate
       ]);
-  
+
+      
       const newArticle = { id: result.insertId, title, content };
       res.status(201).json(newArticle);
     } catch (error) {
       res.status(500).send('Error al crear el artículo' );
+      console.log(error)
     }
   });
 
@@ -150,7 +165,7 @@ router.put('/update/:articleId', upload.single('imageUrl'), async (req, res) => 
       if (content) updateFields.content = content;
       if (author) updateFields.author = author;
       if (publicationDate) updateFields.publicationDate = publicationDate;
-      if (req?.file) updateFields.imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+      if (req?.file) updateFields.imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.originalname}`;
   
       // Verifica si hay algún campo para actualizar
       if (Object.keys(updateFields).length === 0) {

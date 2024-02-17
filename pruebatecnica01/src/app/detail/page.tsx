@@ -16,7 +16,7 @@ import DetailArticle from "../Components/DetailArticle";
   const [value, setValue] = useState(0);
 
   return (
-    <Nav className="d-block d-md-none" >
+    <Nav className="d-none" >
       <BottomNavigation
         showLabels
         value={value}

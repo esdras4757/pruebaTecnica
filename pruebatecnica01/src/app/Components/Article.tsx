@@ -28,7 +28,7 @@ const Article = (props: propsInterface) => {
     return (
         <ArticleContainer >
             <img
-                className='col-12 col-md-2 m-auto pointer'
+                className='col-6 col-md-2 m-auto pointer'
                 onClick={() => redirect(article.articleId)}
                 src={article?.imageUrl !== '' && article.imageUrl ? article.imageUrl : '/images/imgPlaceholder.jpg'}
                 alt={article.title}
@@ -43,7 +43,7 @@ const Article = (props: propsInterface) => {
                         <QuillHtmlRenderer htmlString={article.content} />
                     )}
                 </div>
-                <div style={{position:'absolute', bottom:15, right:10}}>
+                <div className='buttons' style={{ bottom:15, right:10}}>
                 <ButonsPack isOffline={isOffline} onSuccess={onSuccess} article={article}/>
                 </div>
                 <div className='col-12 d-flex column-gap-2 row-gap-1' style={{ flexWrap: 'wrap' }}>
@@ -86,5 +86,18 @@ p{
     font-size: 14px;
 }
 
+@media (min-width: 850px) {
+    .buttons{
+        position: absolute;
+        margin-top: 0px ;
+    }
+}
+@media (max-width: 850px) {
+    .buttons{
+        margin-top: 12px !important;
+        display: flex;
+        justify-content: center;
+    }
+}
 
 `

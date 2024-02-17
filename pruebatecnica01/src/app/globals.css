@@ -159,3 +159,12 @@ a {
     color-scheme: dark;
   }
 }
+
+.fs-7{
+  font-size: 16px;
+}
+@media (max-width:500px) {
+  .fs-7{
+    font-size: 12px;
+  }
+}

@@ -56,7 +56,7 @@ const ButonsPack = (props: propsInterface) => {
     };
     return (
         !isOffline?
-        <div className='d-flex justify-content-end text-center gap-2'>
+        <div className='d-flex justify-content-end container22 text-center gap-2'>
         <div onClick={e=>{
             e.preventDefault()
             e.stopPropagation()
@@ -64,14 +64,14 @@ const ButonsPack = (props: propsInterface) => {
         <DraweEditArticle onSuccess={onSuccess?onSuccess:()=>''} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} id={article.articleId}/>
         </div>
              {contextHolder}
-            <IconContent onClick={(e) => {
+            <IconContent className='IconContent' onClick={(e) => {
                 e.stopPropagation()
                 setIsDrawerOpen(true)
             }}>
                 <i className='fas fa-pencil pointer' />
             </IconContent>
             <SaveArticle article={article} info={info}/>
-            <IconContent onClick={e => {
+            <IconContent className='IconContent' onClick={e => {
                 e.stopPropagation()
                 let fullUrl
                 if (window.location.pathname == '/detail') {
@@ -84,7 +84,7 @@ const ButonsPack = (props: propsInterface) => {
             }}>
                 <i className='fas pointer fa-share' />
             </IconContent>
-            <IconContent onClick={e => {
+            <IconContent className='IconContent' onClick={e => {
                 e.stopPropagation()
                 deleteArticlesFn(article?.articleId)
             }}>

@@ -17,13 +17,13 @@ const Header = (props:mainProps) => {
   const theme=useTheme()
   return (
     <>
- <div className='d-flex p-0 p-md-2 justify-content-between align-content-center align-items-center'>
-      <div className='col-4 '>
-        <img  width={38} className='me-2 pointer' src="./images/blogLogo.png" alt="" /> <span className='
+ <div className='d-flex w-100 p-0 p-md-2 mt-4 mt-md-0 justify-content-between align-content-center align-items-center'>
+      <div className='col-auto'>
+        <img  width={35} className='me-1 pointer' src="./images/blogLogo.png" alt="" /> <span className='
         pointer'>Blog</span>
       </div>
-      <div  className='d-flex col-4 justify-content-end align-items-center'>
-     { isNil(offlineMode)===false && <div className='me-0 me-md-4'>
+      <div  className='d-flex col-auto justify-content-end align-items-center'>
+     { isNil(offlineMode)===false && <div className='me-0 me-md-4 fs-7'>
         Modo Offline<Switch checked={offlineMode} onChange={e=>setOfflineMode?setOfflineMode(e.target.checked):''}/>
         </div>
       }
@@ -42,5 +42,7 @@ const Header = (props:mainProps) => {
    
   )
 }
+
+
 
 export default Header

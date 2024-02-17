@@ -37,7 +37,7 @@ import OfflineView from "./Components/OfflineView";
   }, []);
 
   return (
-    <Nav className="d-block d-md-none" >
+    <Nav className=" d-none" >
       <BottomNavigation
         showLabels
         value={value}
@@ -103,7 +103,13 @@ visibility: visible !important;
   .MuiTabs-flexContainer {
     justify-content: center;
   }
+
+  @media (max-width:400px) {
+    padding: 0px 10px;
+  }
 `;
+
+
 
 const OfflineMessage = styled.div`
   text-align: center;

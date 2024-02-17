@@ -186,11 +186,12 @@ const DraweEditArticle = (props: DrawerInterface) => {
                 open={isDrawerOpen}
                 onClose={() => {
                     resetValues()
+
                     setIsDrawerOpen(false)
                 }}
             >
                 <Spin spinning={loading}>
-                    <div className='p-4' style={{ width: '100%', maxWidth: 700 }}>
+                    <div className='p-4' style={{ width: '100vw', maxWidth: 700 }}>
                         <div className='d-flex justify-content-between w-100'><div>Editar articulo</div> <div>
                             <i onClick={() => {
                                 setIsDrawerOpen(false)

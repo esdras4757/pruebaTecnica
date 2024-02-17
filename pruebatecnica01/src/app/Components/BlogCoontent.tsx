@@ -240,7 +240,7 @@ useEffect(() => {
                     onClick={(e) => {
                         setIsDrawerOpen(!isDrawerOpen);
                     }}
-                    style={{ position: 'absolute', bottom: '80px', right: '4%', color: 'white' }}
+                    style={{ position: 'absolute', bottom: '5%', right: '5%', color: 'white' }}
                     color='success'
                 >
                     <i className='fas fa-plus fs-6 me-0'></i>
@@ -260,7 +260,7 @@ useEffect(() => {
                 resetValues()
             }}
             >
-                <div className='p-4' style={{ width: '100%', maxWidth: 700 }}>
+                <div className='p-4' style={{ width: '100vw', maxWidth: 700 }}>
                     <div className='d-flex justify-content-between w-100'><div>Agregar articulo</div> <div>
                         <i onClick={() => { setIsDrawerOpen(false)
                         resetValues()
@@ -346,7 +346,7 @@ useEffect(() => {
 };
 
 const BlogContentContainer = styled.div`
-padding-bottom: 50px;
+padding-bottom: 5px;
   @media (min-width: 768px) {
     .br {
       border-right: 1px solid #7e7e7e;
