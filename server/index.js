@@ -23,7 +23,7 @@ const upload = multer({ storage });
 app.use(express.json());
 
 app.use('/api/articles', require('./routes/articleRoutes'));
-app.use('/uploads', express.static('./uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.post('/articles/:id/upload', upload.single('image'), async (req, res) => {
   const id = parseInt(req.params.id);
