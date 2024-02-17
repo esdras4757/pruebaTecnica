@@ -98,7 +98,7 @@ visibility: visible !important;
   }
   background-color: ${({ theme }) => theme.palette.background.default};
   padding: 0px 20px;
-  max-height: 100vh;
+  height: 100vh;
   overflow: hidden;
   .MuiTabs-flexContainer {
     justify-content: center;

@@ -212,7 +212,7 @@ useEffect(() => {
                     <Filters filtersNames={filtersNames} getAllArticlesFn={getAllArticlesFn}/>
                 </div>
 
-                <div className='pb-5' style={{ overflow: 'auto', height: '82vh' }}>
+                <div className='pb-5' style={{ overflowY: 'auto', overflowX:'hidden', height: '82vh' }}>
                     <div className='col-12 d-block d-md-none'>
                         <Filters filtersNames={filtersNames} getAllArticlesFn={getAllArticlesFn} />
                     </div>
