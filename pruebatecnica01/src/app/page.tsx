@@ -82,7 +82,7 @@ const Home = () => {
 
 
   return (
-    <Container className="primary-glow">
+    <Container style={{opacity:0}} className="primary-glow">
       <Header offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
       {isOnline ? (
         <BlogContent offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
@@ -95,6 +95,8 @@ const Home = () => {
 };
 
 const Container = styled.div`
+opacity: 1 !important;
+
   color: ${({ theme }) => theme.palette.text.primary};
   h4 {
     color: #1c8ebb;

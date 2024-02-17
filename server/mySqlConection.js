@@ -6,8 +6,8 @@ const initializePool = async () => {
   try {
     pool = await createPool({
       host: 'aws.connect.psdb.cloud',
-      user: 'z7yam0wvf1ob6qdtij5h',
-      password: 'pscale_pw_bqg4pinXeIbch5ThGNJKrQoxtQ8I4vIGrUaL8pgFcwx',
+      user: 'bszgh0bbh14ffd7ajljd',
+      password: 'pscale_pw_WvPvypmRx8OgS7n4hYyTfNG0LYdtU1ydQGK8EyCXH1o',
       database: 'dbpttest',
       ssl: {
         rejectUnauthorized: false
