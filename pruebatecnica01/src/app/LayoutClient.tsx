@@ -1,11 +1,11 @@
 'use client'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import store from './redux/store/store';
 import { appState } from './redux/types';
 import { lime } from '@mui/material/colors';
 import AlertComponent from './Components/Alert';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import styled from 'styled-components'
 import styles from '../styles/Home.module.scss'
 import { useEffect } from 'react';
@@ -63,15 +63,7 @@ function ThemeComponent({ children }: { children: React.ReactNode }) {
   const dispatch=useDispatch()
   const state = useSelector((state:appState)=>state.utils.isLoading)
 
-  useEffect(() => {
-    const theme = localStorage.getItem('themeId')
-    if (theme) {
-      dispatch({type:'changeTheme',payload:theme==='0'?'dark':'light'})
-    }
-    else{
-      localStorage.setItem('themeId','0')
-    }
-  }, [])
+ 
 
   const themeMode = useSelector((state: appState) => state.configuration.theme) == 'dark' ? darkTheme : lightTheme
   return (

@@ -61,7 +61,7 @@ const Home = () => {
           console.error('Error al registrar el Service Worker:', error);
         });
     }
-  }, []);
+  }, [OfflineView]);
 
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const Home = () => {
 
 
   return (
-    <Container className="primary-glow">
+    <Container style={{visibility:'hidden'}} className="primary-glow">
       <Header offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
       {isOnline ? (
         <BlogContent offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>

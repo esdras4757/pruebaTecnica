@@ -1,7 +1,7 @@
 import { configurationState, configurationActionTypes} from "../types";
 
 const initialState:configurationState ={
-    theme:'light',
+    theme:'dark',
     language:'es'
 }
 

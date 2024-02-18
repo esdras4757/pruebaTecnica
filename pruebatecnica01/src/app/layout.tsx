@@ -4,6 +4,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import StyledComponentsRegistry from './lib/registry'
 import { LinearProgress } from '@mui/material';
 import { appState } from './redux/types';
 import { useSelector } from 'react-redux';
@@ -24,7 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <LayoutClient>
         <body className={inter.className}>
-          {children}</body>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </body>
       </LayoutClient>
     </html>
   )
