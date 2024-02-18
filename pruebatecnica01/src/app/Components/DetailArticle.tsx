@@ -27,7 +27,7 @@ const DetailArticle = (props:PropsInterface) => {
 
 
     useEffect(() => {
-        const id = searchParams.get('id')
+        const id = searchParams?.get('id')
         if (id != '' && id) {
             setLastid(id) 
         }
