@@ -1,9 +1,9 @@
+import styled from 'styled-components'
 import LayoutClient from './LayoutClient'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import styled from 'styled-components'
 import { LinearProgress } from '@mui/material';
 import { appState } from './redux/types';
 import { useSelector } from 'react-redux';
