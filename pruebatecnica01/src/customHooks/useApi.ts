@@ -16,7 +16,6 @@ export const useApi = <T>(constant: ApiEndpointType, method: MethodType, data: T
         method,
         url: constant,
         data, 
-        withCredentials: true,
     })
     .catch(error=>{
         openNotification('error',error.response?.data??'Ah ocurrido un error intentalo nuevamente',5)
