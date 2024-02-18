@@ -1,15 +1,10 @@
 'use client'
-import Image from "next/image";
-import styles from "./page.module.css";
+import styled from "styled-components";
 import Header from "./Components/Header";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import { useEffect, useState } from "react";
 import { BottomNavigation, BottomNavigationAction, Box, Drawer } from "@mui/material";
 import TabContext from '@mui/lab/TabContext';
 import { TabList, TabPanel } from "@mui/lab";
-import styled from "styled-components";
-import BlogCoontent from "./Components/BlogCoontent";
 import BlogContent from "./Components/BlogCoontent";
 import OfflineView from "./Components/OfflineView";
   
@@ -55,6 +50,20 @@ import OfflineView from "./Components/OfflineView";
 const Home = () => {
   const [isOnline, setIsOnline] = useState(true);
   const [offlineMode, setOfflineMode] = useState(false)
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(error => {
+          console.error('Error al registrar el Service Worker:', error);
+        });
+    }
+  }, []);
+
+
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -78,7 +87,7 @@ const Home = () => {
 
 
   return (
-    <Container style={{visibility:'hidden'}} className="primary-glow">
+    <Container className="primary-glow">
       <Header offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>
       {isOnline ? (
         <BlogContent offlineMode={offlineMode} setOfflineMode={setOfflineMode}/>

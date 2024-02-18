@@ -1,4 +1,5 @@
 import React from 'react';
+import Editor from './Editor';
 
 interface QuillHtmlRendererProps {
   htmlString: string | undefined;
@@ -19,7 +20,7 @@ const QuillHtmlRenderer: React.FC<QuillHtmlRendererProps> = ({ htmlString, compl
     }
 
   return (
-    <div>{complete===false?extractedText:tempElement.innerText}</div>
+    <Editor readOnly={true} onChange={()=>{}} value={complete?htmlString:extractedText}/>
   );
 };
 

@@ -166,3 +166,13 @@ a {
     font-size: 12px;
   }
 }
+
+.whitout-border .ql-container.ql-snow{
+border: none !important;
+cursor: pointer !important;
+}
+
+.whitout-border .ql-editor{
+padding-left: 0px !important;
+padding-right: 0px !important;
+}

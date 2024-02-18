@@ -6,13 +6,15 @@ import { EditorProps } from '../Types/appTypes';
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
 
-const Editor: React.FC<EditorProps> = ({ value, onChange }) => {
-
+const Editor: React.FC<EditorProps> = ({ value, onChange, readOnly }) => {
+    const modules = {
+        toolbar: !readOnly, 
+      };
     return (
         <>
-            {<EditorContainer>
+            {<EditorContainer className='pb-4'>
                 {typeof window !== 'undefined' && window.document &&
-                    <QuillEditor value={value} onChange={onChange} />
+                    <QuillEditor className={`${readOnly?'whitout-border': ''}`} readOnly={readOnly} modules={modules} value={value} onChange={onChange} />
                 }
             </EditorContainer>}
         </>

@@ -15,6 +15,7 @@ export type ApiEndpointType = typeof  ApiConstants[keyof typeof ApiConstants]
 export interface EditorProps {
     value: string;
     onChange: (value: string) => void;
+    readOnly:boolean
 }
 
 export type FiltersNamesType = {

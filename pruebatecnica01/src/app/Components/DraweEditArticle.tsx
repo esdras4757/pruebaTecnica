@@ -242,7 +242,7 @@ const DraweEditArticle = (props: DrawerInterface) => {
                                 </div>
                                 <div className='mb-4'>
                                     <label className='mb-2 mt-4' htmlFor="">Contenido</label>
-                                    <Editor value={dataForm.content} onChange={(e) => {
+                                    <Editor readOnly={false} value={dataForm.content} onChange={(e) => {
                                         setDataForm(data => {
                                             if (!data) {
                                                 return data
